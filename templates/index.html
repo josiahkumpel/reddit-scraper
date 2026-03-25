@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reddit Top Post Analyzer (with Exa)</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <main>
+    <h1>Reddit Top Post Analyzer</h1>
+    <p>Pull top posts + all comment upvotes. Optionally enrich external links with Exa Contents API.</p>
+
+    <form id="scrape-form">
+      <label>
+        Subreddit
+        <input id="subreddit" placeholder="e.g. python" required />
+      </label>
+
+      <label>
+        Number of top posts
+        <input id="limit" type="number" min="1" max="50" value="5" required />
+      </label>
+
+      <label>
+        Time range
+        <select id="time_filter">
+          <option value="week">Past week</option>
+          <option value="month">Past month</option>
+          <option value="year">Past year</option>
+        </select>
+      </label>
+
+      <button type="submit">Scrape + Build analysis text</button>
+    </form>
+
+    <section>
+      <h2>Status</h2>
+      <div id="status">Idle</div>
+    </section>
+
+    <section>
+      <h2>Structured output</h2>
+      <pre id="json-output"></pre>
+    </section>
+
+    <section>
+      <h2>All text to analyze</h2>
+      <textarea id="analysis-text" rows="20" readonly></textarea>
+      <button id="copy-btn" type="button">Copy text</button>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
